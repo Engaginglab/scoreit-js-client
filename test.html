@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ScoreIt test</title>
+		<script src="../enyojs/enyo/enyo.js"></script>
+		<script src="source/scoreit.js"></script>
+	</head>
+	<body>
+		<script>
+			// Get union list
+			scoreit.union.getList([["name", "Beispielverband"]], function(sender, response) {
+				document.write(JSON.stringify(response));
+			});
+			
+			// Get union detail
+			// scoreit.union.getDetail([1,2], function(sender, response) {
+			// 	document.write(JSON.stringify(response));
+			// });
+
+
+			// var ajax = new enyo.Ajax({url: "http://127.0.0.1:8000/api/v1/club/", method: "POST", cacheBust: false, contentType: "application/json"});
+			// ajax.error(function(sender, response) {
+			// 	document.write(sender.xhr.responseText);
+			// });
+			// ajax.response(function(sender, response) {
+			// 	document.write(JSON.stringify(response));
+			// })
+			// ajax.go(JSON.stringify({name: "testclub", union: {name: "some fancy new union!!!"}}));
+		</script>
+	</body>
+</html>
