@@ -143,7 +143,7 @@ scoreit.Team = function() {
 	this.resourceName = "team";
 };
 
-scoreit.League.inheritsFrom(scoreit.Resource);
+scoreit.Team.inheritsFrom(scoreit.Resource);
 
 scoreit.Team.prototype.create = function(name, club, league, callback) {
 	this.parent.create.call(this, {name: name, club: league}, callback);
@@ -154,7 +154,7 @@ scoreit.Person = function() {
 	this.resourceName = "person";
 };
 
-scoreit.Person.inheritsFrom(scoreit.Resource());
+scoreit.Person.inheritsFrom(scoreit.Resource);
 
 scoreit.Person.prototype.create = function(firstName, lastName, passNumber, gender, address, city, zipCode, birthday, callback) {
 	this.parent.create.call(this, {first_name: firstName, last_name: lastName,
