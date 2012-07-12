@@ -63,6 +63,12 @@ scoreit = {
 			callback(false);
 		});
 	},
+	signUp: function(username, password, email, firstName, lastName, gender, passNumber, address, city, zipCode, mobileNumber, profile, callback) {
+		scoreit.request(scoreit.domain + "api/" + scoreit.version + "/auth/signup/", "POST", {
+			username: username, password:password, email: email, first_name: firstName, last_name: lastName, gender: gender,
+			pass_number: passNumber, address: address, city: city, zip_code: zipCode, mobile_number: mobileNumber, profile: profile
+		}, callback);
+	},
 	isUnique: function(username, email, passNumber, callback) {
 		passNumber = passNumber || 0;
 		scoreit.request(scoreit.domain + "api/" + scoreit.version + "/auth/unique/", "GET", {user_name: username, email: email, pass_number: passNumber}, callback);
