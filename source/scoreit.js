@@ -46,20 +46,26 @@ scoreit = {
 			url += "?username=" + scoreit.user.username + "&api_key=" + scoreit.user.api_key;
 		}
 
-		params = JSON.stringify(params);
+		if (method != "GET") {
+			params = JSON.stringify(params);
+		}
 		scoreit.request(url, method, params, callback, failure);
 	},
 	/**
 		Validate user credentials and obtain api key and profile data
 	*/
 	setUser: function(username, password, callback) {
-		scoreit.request(scoreit.domain + "auth/validate/", "POST", {username: username, password: password}, function(sender, response) {
+		scoreit.request(scoreit.domain + "api/" + scoreit.version + "/auth/validate/", "POST", {username: username, password: password}, function(sender, response) {
 			scoreit.user = response;
 			scoreit.user.username = username;
 			callback(true);
 		}, function(sender, response) {
 			callback(false);
 		});
+	},
+	isUnique: function(username, email, passNumber, callback) {
+		passNumber = passNumber || 0;
+		scoreit.request(scoreit.domain + "api/" + scoreit.version + "/auth/unique/", "GET", {user_name: username, email: email, pass_number: passNumber}, callback);
 	}
 };
 
