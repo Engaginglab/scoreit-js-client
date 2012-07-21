@@ -63,11 +63,10 @@ scoreit = {
 			callback(false);
 		});
 	},
-	signUp: function(username, password, email, firstName, lastName, gender, passNumber, address, city, zipCode, mobileNumber, profile, callback) {
+	signUp: function(username, password, email, firstName, lastName, profile, success, fail) {
 		scoreit.request(scoreit.domain + "api/" + scoreit.version + "/auth/signup/", "POST", {
-			username: username, password:password, email: email, first_name: firstName, last_name: lastName, gender: gender,
-			pass_number: passNumber, address: address, city: city, zip_code: zipCode, mobile_number: mobileNumber, profile: profile
-		}, callback);
+			username: username, password:password, email: email, first_name: firstName, last_name: lastName, profile: profile
+		}, success, fail);
 	},
 	isUnique: function(username, email, passNumber, callback) {
 		passNumber = passNumber || 0;
@@ -112,6 +111,9 @@ scoreit.Resource.prototype = {
 	update: function(id, params, callback) {
 		scoreit.requestResource(this.resourceName, id, "PATCH", params, callback);
 	},
+	put: function(id, params, callback) {
+		scoreit.requestResource(this.resourceName, id, "PUT", params, callback);
+	},
 	remove: function(id, callback) {
 		scoreit.requestResource(this.resourceName, id, "DELETE", null, callback);
 	}
@@ -124,9 +126,20 @@ scoreit.Union = function() {
 
 scoreit.Union.inheritsFrom(scoreit.Resource);
 
-scoreit.Union.prototype.create = function(name, callback) {
-	this.parent.create.call(this, {name: name}, callback);
+// scoreit.Union.prototype.create = function(name, callback) {
+// 	this.parent.create.call(this, {name: name}, callback);
+// };
+
+
+scoreit.District = function() {
+	this.resourceName = "district";
 };
+
+scoreit.District.inheritsFrom(scoreit.Resource);
+
+// scoreit.League.prototype.create = function(name, gender, callback) {
+// 	this.parent.create.call(this, {name: name, gender: gender}, callback);
+// };
 
 
 scoreit.League = function() {
@@ -135,9 +148,9 @@ scoreit.League = function() {
 
 scoreit.League.inheritsFrom(scoreit.Resource);
 
-scoreit.League.prototype.create = function(name, gender, callback) {
-	this.parent.create.call(this, {name: name, gender: gender}, callback);
-};
+// scoreit.League.prototype.create = function(name, gender, callback) {
+// 	this.parent.create.call(this, {name: name, gender: gender}, callback);
+// };
 
 
 scoreit.Club = function() {
@@ -146,9 +159,9 @@ scoreit.Club = function() {
 
 scoreit.Club.inheritsFrom(scoreit.Resource);
 
-scoreit.Club.prototype.create = function(name, union, callback) {
-	this.parent.create.call(this, {name: name, union: union}, callback);
-};
+// scoreit.Club.prototype.create = function(name, union, callback) {
+// 	this.parent.create.call(this, {name: name, union: union}, callback);
+// };
 
 
 scoreit.Team = function() {
@@ -157,9 +170,9 @@ scoreit.Team = function() {
 
 scoreit.Team.inheritsFrom(scoreit.Resource);
 
-scoreit.Team.prototype.create = function(name, club, league, callback) {
-	this.parent.create.call(this, {name: name, club: league}, callback);
-};
+// scoreit.Team.prototype.create = function(name, club, league, callback) {
+// 	this.parent.create.call(this, {name: name, club: league}, callback);
+// };
 
 
 scoreit.Person = function() {
@@ -168,10 +181,10 @@ scoreit.Person = function() {
 
 scoreit.Person.inheritsFrom(scoreit.Resource);
 
-scoreit.Person.prototype.create = function(firstName, lastName, passNumber, gender, address, city, zipCode, birthday, callback) {
-	this.parent.create.call(this, {first_name: firstName, last_name: lastName,
-		pass_number: passNumber, gender: gender, address: address, city: city, zip_code: zipCode, birthday: birthday}, callback);
-};
+// scoreit.Person.prototype.create = function(firstName, lastName, passNumber, gender, address, city, zipCode, birthday, callback) {
+// 	this.parent.create.call(this, {first_name: firstName, last_name: lastName,
+// 		pass_number: passNumber, gender: gender, address: address, city: city, zip_code: zipCode, birthday: birthday}, callback);
+// };
 
 
 scoreit.GameType = function() {
@@ -180,11 +193,12 @@ scoreit.GameType = function() {
 
 scoreit.GameType.inheritsFrom(scoreit.Resource);
 
-scoreit.GameType.prototype.create = function(name, callback) {
-	this.parent.create.call(this, {name: name}, callback);
-};
+// scoreit.GameType.prototype.create = function(name, callback) {
+// 	this.parent.create.call(this, {name: name}, callback);
+// };
 
 scoreit.union = new scoreit.Union();
+scoreit.district = new scoreit.District();
 scoreit.league = new scoreit.League();
 scoreit.club = new scoreit.Club();
 scoreit.team = new scoreit.Team();
