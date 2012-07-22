@@ -76,7 +76,7 @@ scoreit.Resource.prototype = {
 		var url = scoreit.domain + this.appPrefix + "api/" + scoreit.version + "/" + this.resourceName + "/";
 
 		if (id !== undefined && id !== null) {
-			if (id.length) {
+			if (typeof(id) != "string" && id.length) {
 				url += "set/" + id.join(";");
 			} else {
 				url += id;
