@@ -40,19 +40,16 @@ scoreit = {
 	/**
 		Validate user credentials and obtain api key and profile data
 	*/
-	setUser: function(username, password, callback) {
-		scoreit.request(scoreit.domain + "api/" + scoreit.version + "/auth/validate/", "POST", {username: username, password: password}, function(sender, response) {
+	login: function(username, password, callback) {
+		scoreit.request(scoreit.domain + "auth/api/" + scoreit.version + "/validate/", "POST", {username: username, password: password}, function(sender, response) {
 			scoreit.user = response;
-			scoreit.user.username = username;
 			callback(true);
 		}, function(sender, response) {
 			callback(false);
 		});
 	},
-	signUp: function(username, password, email, firstName, lastName, success, fail) {
-		scoreit.request(scoreit.domain + "auth/api/" + scoreit.version + "/signup/", "POST", {
-			username: username, password:password, email: email, first_name: firstName, last_name: lastName
-		}, success, fail);
+	signUp: function(params, success, fail) {
+		scoreit.request(scoreit.domain + "auth/api/" + scoreit.version + "/signup/", "POST", params, success, fail);
 	}
 };
 
