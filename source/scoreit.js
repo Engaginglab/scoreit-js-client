@@ -233,6 +233,14 @@ scoreit.handball.GameType.inheritsFrom(scoreit.Resource);
 // 	this.parent.create.call(this, {name: name}, callback);
 // };
 
+scoreit.handball.ClubMemberRelation = function() {
+	this.resourceName = "clubmemberrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.ClubMemberRelation.inheritsFrom(scoreit.Resource);
+
+
 scoreit.handball.union = new scoreit.handball.Union();
 scoreit.handball.district = new scoreit.handball.District();
 scoreit.handball.league = new scoreit.handball.League();
@@ -240,3 +248,4 @@ scoreit.handball.club = new scoreit.handball.Club();
 scoreit.handball.team = new scoreit.handball.Team();
 scoreit.handball.person = new scoreit.handball.Person();
 scoreit.handball.gameType = new scoreit.handball.GameType();
+scoreit.handball.clubmemberrelation = new scoreit.handball.ClubMemberRelation();
