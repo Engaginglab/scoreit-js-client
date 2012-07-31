@@ -152,10 +152,6 @@ scoreit.handball.Union = function() {
 
 scoreit.handball.Union.inheritsFrom(scoreit.Resource);
 
-// scoreit.handballUnion.prototype.create = function(name, callback) {
-// 	this.parent.create.call(this, {name: name}, callback);
-// };
-
 
 scoreit.handball.District = function() {
 	this.resourceName = "district";
@@ -163,10 +159,6 @@ scoreit.handball.District = function() {
 };
 
 scoreit.handball.District.inheritsFrom(scoreit.Resource);
-
-// scoreit.handballLeague.prototype.create = function(name, gender, callback) {
-// 	this.parent.create.call(this, {name: name, gender: gender}, callback);
-// };
 
 
 scoreit.handball.League = function() {
@@ -176,10 +168,6 @@ scoreit.handball.League = function() {
 
 scoreit.handball.League.inheritsFrom(scoreit.Resource);
 
-// scoreit.handball.League.prototype.create = function(name, gender, callback) {
-// 	this.parent.create.call(this, {name: name, gender: gender}, callback);
-// };
-
 
 scoreit.handball.Club = function() {
 	this.resourceName = "club";
@@ -188,10 +176,6 @@ scoreit.handball.Club = function() {
 
 scoreit.handball.Club.inheritsFrom(scoreit.Resource);
 
-// scoreit.handball.Club.prototype.create = function(name, union, callback) {
-// 	this.parent.create.call(this, {name: name, union: union}, callback);
-// };
-
 
 scoreit.handball.Team = function() {
 	this.resourceName = "team";
@@ -199,10 +183,6 @@ scoreit.handball.Team = function() {
 };
 
 scoreit.handball.Team.inheritsFrom(scoreit.Resource);
-
-// scoreit.handball.Team.prototype.create = function(name, club, league, callback) {
-// 	this.parent.create.call(this, {name: name, club: league}, callback);
-// };
 
 
 scoreit.handball.Person = function() {
@@ -216,10 +196,29 @@ scoreit.handball.Person.prototype.isUnique =  function(params, callback) {
 	scoreit.request(scoreit.domain + this.appPrefix + "api/" + scoreit.version + "/unique/", "GET", params, callback);
 };
 
-// scoreit.handball.Person.prototype.create = function(firstName, lastName, passNumber, gender, address, city, zipCode, birthday, callback) {
-// 	this.parent.create.call(this, {first_name: firstName, last_name: lastName,
-// 		pass_number: passNumber, gender: gender, address: address, city: city, zip_code: zipCode, birthday: birthday}, callback);
-// };
+
+scoreit.handball.GameType = function() {
+	this.resourceName = "gametype";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.GameType.inheritsFrom(scoreit.Resource);
+
+
+scoreit.handball.ClubMemberRelation = function() {
+	this.resourceName = "clubmemberrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.ClubMemberRelation.inheritsFrom(scoreit.Resource);
+
+
+scoreit.handball.Site = function() {
+	this.resourceName = "site";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.Site.inheritsFrom(scoreit.Resource);
 
 
 scoreit.handball.GameType = function() {
@@ -229,16 +228,13 @@ scoreit.handball.GameType = function() {
 
 scoreit.handball.GameType.inheritsFrom(scoreit.Resource);
 
-// scoreit.handball.GameType.prototype.create = function(name, callback) {
-// 	this.parent.create.call(this, {name: name}, callback);
-// };
 
-scoreit.handball.ClubMemberRelation = function() {
-	this.resourceName = "clubmemberrelation";
+scoreit.handball.Group = function() {
+	this.resourceName = "group";
 	this.appPrefix = "handball/";
 };
 
-scoreit.handball.ClubMemberRelation.inheritsFrom(scoreit.Resource);
+scoreit.handball.Group.inheritsFrom(scoreit.Resource);
 
 
 scoreit.handball.union = new scoreit.handball.Union();
@@ -249,3 +245,6 @@ scoreit.handball.team = new scoreit.handball.Team();
 scoreit.handball.person = new scoreit.handball.Person();
 scoreit.handball.gameType = new scoreit.handball.GameType();
 scoreit.handball.clubmemberrelation = new scoreit.handball.ClubMemberRelation();
+scoreit.handball.site = new scoreit.handball.Site();
+scoreit.handball.gametype = new scoreit.handball.GameType();
+scoreit.handball.group = new scoreit.handball.Group();
