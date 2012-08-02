@@ -109,6 +109,11 @@ scoreit.Resource.prototype = {
 	},
 	remove: function(id, callback) {
 		scoreit.requestResource(this.buildUrl(id), "DELETE", null, callback);
+	},
+	bulk: function(objects, deletedObjects, callback) {
+		objects = objects || [];
+		deletedObjects = deletedObjects || [];
+		scoreit.requestResource(this.buildUrl(), "PATCH", {objects: objects, deleted_objects: deletedObjects}, callback);
 	}
 };
 
@@ -221,20 +226,36 @@ scoreit.handball.Site = function() {
 scoreit.handball.Site.inheritsFrom(scoreit.Resource);
 
 
-scoreit.handball.GameType = function() {
-	this.resourceName = "gametype";
-	this.appPrefix = "handball/";
-};
-
-scoreit.handball.GameType.inheritsFrom(scoreit.Resource);
-
-
 scoreit.handball.Group = function() {
 	this.resourceName = "group";
 	this.appPrefix = "handball/";
 };
 
 scoreit.handball.Group.inheritsFrom(scoreit.Resource);
+
+
+scoreit.handball.Game = function() {
+	this.resourceName = "game";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.Game.inheritsFrom(scoreit.Resource);
+
+
+scoreit.handball.Event = function() {
+	this.resourceName = "event";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.Event.inheritsFrom(scoreit.Resource);
+
+
+scoreit.handball.GamePlayerRelation = function() {
+	this.resourceName = "gameplayerrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.GamePlayerRelation.inheritsFrom(scoreit.Resource);
 
 
 scoreit.handball.union = new scoreit.handball.Union();
@@ -248,3 +269,6 @@ scoreit.handball.clubmemberrelation = new scoreit.handball.ClubMemberRelation();
 scoreit.handball.site = new scoreit.handball.Site();
 scoreit.handball.gametype = new scoreit.handball.GameType();
 scoreit.handball.group = new scoreit.handball.Group();
+scoreit.handball.game = new scoreit.handball.Game();
+scoreit.handball.event = new scoreit.handball.Event();
+scoreit.handball.gameplayerrelation = new scoreit.handball.GamePlayerRelation();
