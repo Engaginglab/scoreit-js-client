@@ -2,6 +2,7 @@
 	Javascript client library for the Score.it api
 */
 scoreit = {
+	// domain: "http://46.163.113.242/",
 	domain: "http://127.0.0.1:8000/",
 	version: "v1",
 	user: {},
@@ -29,7 +30,7 @@ scoreit = {
 		if (scoreit.user.api_key) {
 			// params["username"] = scoreit.user.username;
 			// params["api_key"] = scoreit.user.api_key;
-			url += "?username=" + scoreit.user.username + "&api_key=" + scoreit.user.api_key;
+			url += "?username=" + scoreit.user.username + "&api_key=" + scoreit.user.api_key.key;
 		}
 
 		if (method != "GET") {
@@ -202,14 +203,6 @@ scoreit.handball.Person.prototype.isUnique =  function(params, callback) {
 };
 
 
-scoreit.handball.GameType = function() {
-	this.resourceName = "gametype";
-	this.appPrefix = "handball/";
-};
-
-scoreit.handball.GameType.inheritsFrom(scoreit.Resource);
-
-
 scoreit.handball.ClubMemberRelation = function() {
 	this.resourceName = "clubmemberrelation";
 	this.appPrefix = "handball/";
@@ -258,17 +251,24 @@ scoreit.handball.GamePlayerRelation = function() {
 scoreit.handball.GamePlayerRelation.inheritsFrom(scoreit.Resource);
 
 
+scoreit.handball.TeamPlayerRelation = function() {
+	this.resourceName = "teamplayerrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.TeamPlayerRelation.inheritsFrom(scoreit.Resource);
+
+
 scoreit.handball.union = new scoreit.handball.Union();
 scoreit.handball.district = new scoreit.handball.District();
 scoreit.handball.league = new scoreit.handball.League();
 scoreit.handball.club = new scoreit.handball.Club();
 scoreit.handball.team = new scoreit.handball.Team();
 scoreit.handball.person = new scoreit.handball.Person();
-scoreit.handball.gameType = new scoreit.handball.GameType();
 scoreit.handball.clubmemberrelation = new scoreit.handball.ClubMemberRelation();
 scoreit.handball.site = new scoreit.handball.Site();
-scoreit.handball.gametype = new scoreit.handball.GameType();
 scoreit.handball.group = new scoreit.handball.Group();
 scoreit.handball.game = new scoreit.handball.Game();
 scoreit.handball.event = new scoreit.handball.Event();
 scoreit.handball.gameplayerrelation = new scoreit.handball.GamePlayerRelation();
+scoreit.handball.teamplayerrelation = new scoreit.handball.TeamPlayerRelation();
