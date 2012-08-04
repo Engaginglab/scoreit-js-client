@@ -2,8 +2,8 @@
 	Javascript client library for the Score.it api
 */
 scoreit = {
-	// domain: "http://46.163.113.242/",
-	domain: "http://127.0.0.1:8000/",
+	// domain: "http://46.163.113.242/api/",
+	apiUrl: "http://127.0.0.1:8000/",
 	version: "v1",
 	user: {},
 	/**
@@ -42,7 +42,7 @@ scoreit = {
 		Validate user credentials and obtain api key and profile data
 	*/
 	login: function(username, password, callback) {
-		scoreit.request(scoreit.domain + "auth/api/" + scoreit.version + "/validate/", "POST", {username: username, password: password}, function(sender, response) {
+		scoreit.request(scoreit.apiUrl + "auth/" + scoreit.version + "/validate/", "POST", {username: username, password: password}, function(sender, response) {
 			scoreit.user = response;
 			callback(true);
 		}, function(sender, response) {
@@ -50,7 +50,7 @@ scoreit = {
 		});
 	},
 	signUp: function(params, success, fail) {
-		scoreit.request(scoreit.domain + "auth/api/" + scoreit.version + "/signup/", "POST", params, success, fail);
+		scoreit.request(scoreit.apiUrl + "auth/" + scoreit.version + "/signup/", "POST", params, success, fail);
 	}
 };
 
@@ -71,7 +71,7 @@ scoreit.Resource = function() {};
 scoreit.Resource.prototype = {
 	//* @protected
 	buildUrl: function(id) {
-		var url = scoreit.domain + this.appPrefix + "api/" + scoreit.version + "/" + this.resourceName + "/";
+		var url = scoreit.apiUrl + this.appPrefix + scoreit.version + "/" + this.resourceName + "/";
 
 		if (id !== undefined && id !== null) {
 			if (typeof(id) != "string" && id.length) {
@@ -132,7 +132,7 @@ scoreit.auth.User = function() {
 scoreit.auth.User.inheritsFrom(scoreit.Resource);
 
 scoreit.auth.User.prototype.isUnique = function(params, callback) {
-	scoreit.request(scoreit.domain + this.appPrefix + "api/" + scoreit.version + "/unique/", "GET", params, callback);
+	scoreit.request(scoreit.apiUrl + this.appPrefix + scoreit.version + "/unique/", "GET", params, callback);
 };
 
 scoreit.auth.Profile = function() {
@@ -199,7 +199,7 @@ scoreit.handball.Person = function() {
 scoreit.handball.Person.inheritsFrom(scoreit.Resource);
 
 scoreit.handball.Person.prototype.isUnique =  function(params, callback) {
-	scoreit.request(scoreit.domain + this.appPrefix + "api/" + scoreit.version + "/unique/", "GET", params, callback);
+	scoreit.request(scoreit.apiUrl + this.appPrefix + "api/" + scoreit.version + "/unique/", "GET", params, callback);
 };
 
 
