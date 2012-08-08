@@ -149,7 +149,11 @@ scoreit.auth.profile = new scoreit.auth.Profile();
 	Handball Resources
 */
 
-scoreit.handball = {};
+scoreit.handball = {
+	sendInvite: function(params, callback) {
+		scoreit.request(scoreit.apiUrl + "handball/" + scoreit.version + "/send_invitation/", "POST", params, callback);
+	}
+};
 
 scoreit.handball.Union = function() {
 	this.resourceName = "union";
@@ -199,7 +203,7 @@ scoreit.handball.Person = function() {
 scoreit.handball.Person.inheritsFrom(scoreit.Resource);
 
 scoreit.handball.Person.prototype.isUnique =  function(params, callback) {
-	scoreit.request(scoreit.apiUrl + this.appPrefix + "api/" + scoreit.version + "/unique/", "GET", params, callback);
+	scoreit.request(scoreit.apiUrl + this.appPrefix + scoreit.version + "/unique/", "GET", params, callback);
 };
 
 
@@ -267,6 +271,22 @@ scoreit.handball.TeamCoachRelation = function() {
 scoreit.handball.TeamCoachRelation.inheritsFrom(scoreit.Resource);
 
 
+scoreit.handball.ClubManagerRelation = function() {
+	this.resourceName = "clubmanagerrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.ClubManagerRelation.inheritsFrom(scoreit.Resource);
+
+
+scoreit.handball.TeamManagerRelation = function() {
+	this.resourceName = "teammanagerrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.TeamManagerRelation.inheritsFrom(scoreit.Resource);
+
+
 scoreit.handball.union = new scoreit.handball.Union();
 scoreit.handball.district = new scoreit.handball.District();
 scoreit.handball.league = new scoreit.handball.League();
@@ -281,3 +301,5 @@ scoreit.handball.event = new scoreit.handball.Event();
 scoreit.handball.gameplayerrelation = new scoreit.handball.GamePlayerRelation();
 scoreit.handball.teamplayerrelation = new scoreit.handball.TeamPlayerRelation();
 scoreit.handball.teamcoachrelation = new scoreit.handball.TeamCoachRelation();
+scoreit.handball.clubmanagerrelation = new scoreit.handball.ClubManagerRelation();
+scoreit.handball.teammanagerrelation = new scoreit.handball.TeamManagerRelation();
