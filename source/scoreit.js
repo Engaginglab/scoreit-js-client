@@ -1,5 +1,5 @@
 /**
-	Javascript client library for the Score.it api
+	Javascript client library for the score.it api
 */
 scoreit = {
 	// domain: "http://46.163.113.242/api/",
@@ -171,12 +171,12 @@ scoreit.handball.District = function() {
 scoreit.handball.District.inheritsFrom(scoreit.Resource);
 
 
-scoreit.handball.League = function() {
-	this.resourceName = "league";
+scoreit.handball.Group = function() {
+	this.resourceName = "group";
 	this.appPrefix = "handball/";
 };
 
-scoreit.handball.League.inheritsFrom(scoreit.Resource);
+scoreit.handball.Group.inheritsFrom(scoreit.Resource);
 
 
 scoreit.handball.Club = function() {
@@ -239,6 +239,14 @@ scoreit.handball.Game = function() {
 scoreit.handball.Game.inheritsFrom(scoreit.Resource);
 
 
+scoreit.handball.GameType = function() {
+	this.resourceName = "gametype";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.GameType.inheritsFrom(scoreit.Resource);
+
+
 scoreit.handball.Event = function() {
 	this.resourceName = "event";
 	this.appPrefix = "handball/";
@@ -287,9 +295,16 @@ scoreit.handball.TeamManagerRelation = function() {
 scoreit.handball.TeamManagerRelation.inheritsFrom(scoreit.Resource);
 
 
+scoreit.handball.LeagueLevel = function() {
+	this.resourceName = "leaguelevel";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.LeagueLevel.inheritsFrom(scoreit.Resource);
+
+
 scoreit.handball.union = new scoreit.handball.Union();
 scoreit.handball.district = new scoreit.handball.District();
-scoreit.handball.league = new scoreit.handball.League();
 scoreit.handball.club = new scoreit.handball.Club();
 scoreit.handball.team = new scoreit.handball.Team();
 scoreit.handball.person = new scoreit.handball.Person();
@@ -297,9 +312,11 @@ scoreit.handball.clubmemberrelation = new scoreit.handball.ClubMemberRelation();
 scoreit.handball.site = new scoreit.handball.Site();
 scoreit.handball.group = new scoreit.handball.Group();
 scoreit.handball.game = new scoreit.handball.Game();
+scoreit.handball.gametype = new scoreit.handball.GameType();
 scoreit.handball.event = new scoreit.handball.Event();
 scoreit.handball.gameplayerrelation = new scoreit.handball.GamePlayerRelation();
 scoreit.handball.teamplayerrelation = new scoreit.handball.TeamPlayerRelation();
 scoreit.handball.teamcoachrelation = new scoreit.handball.TeamCoachRelation();
 scoreit.handball.clubmanagerrelation = new scoreit.handball.ClubManagerRelation();
 scoreit.handball.teammanagerrelation = new scoreit.handball.TeamManagerRelation();
+scoreit.handball.leaguelevel = new scoreit.handball.LeagueLevel();
