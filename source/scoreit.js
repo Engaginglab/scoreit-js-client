@@ -303,6 +303,14 @@ scoreit.handball.LeagueLevel = function() {
 scoreit.handball.LeagueLevel.inheritsFrom(scoreit.Resource);
 
 
+scoreit.handball.GroupTeamRelation = function() {
+	this.resourceName = "groupteamrelation";
+	this.appPrefix = "handball/";
+};
+
+scoreit.handball.GroupTeamRelation.inheritsFrom(scoreit.Resource);
+
+
 scoreit.handball.union = new scoreit.handball.Union();
 scoreit.handball.district = new scoreit.handball.District();
 scoreit.handball.club = new scoreit.handball.Club();
@@ -320,3 +328,4 @@ scoreit.handball.teamcoachrelation = new scoreit.handball.TeamCoachRelation();
 scoreit.handball.clubmanagerrelation = new scoreit.handball.ClubManagerRelation();
 scoreit.handball.teammanagerrelation = new scoreit.handball.TeamManagerRelation();
 scoreit.handball.leaguelevel = new scoreit.handball.LeagueLevel();
+scoreit.handball.groupteamrelation = new scoreit.handball.GroupTeamRelation();
